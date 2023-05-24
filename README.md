@@ -11,27 +11,51 @@
     
 
 ## La estructura de la base de datos será la misma que la que había en el proyecto de Angular
-### Tareas:
+---
+## Tareas:
+#### BackEnd
 - [x] Crear estructura del backend
-- [ ] Hacer migraciones de las bases de datos
+- [x] Hacer migraciones de las bases de datos
     - [x] Tabla User
-    - [ ] Tabla Restaurant
+    - [x] Tabla Restaurant
+    - [x] Tabla Table
+    - [x] Tabla Room
+    - [x] Tabla RestaurantProfile
+    - [x] Tabla Booking
+    - [x] Tabla Opinion
+- [ ] Crear peticiones para la API
+    - [x] Tabla User
+    - [x] Tabla Restaurant
     - [ ] Tabla Table
     - [ ] Tabla Room
     - [ ] Tabla RestaurantProfile
     - [ ] Tabla Booking
+    - [ ] Tabla Opinion
+- [ ] Crear middlewares para la gestion de datos
+    - [x] Tabla User
+    - [x] Tabla Restaurant
+    - [ ] Tabla Table
+    - [ ] Tabla Room
+    - [ ] Tabla RestaurantProfile
+    - [ ] Tabla Booking
+    - [ ] Tabla Opinion
+- [ ] Implementacion validacion de datos
+    - [x] Tabla User
+    - [x] Tabla Restaurant
+    - [ ] Tabla Table
+    - [ ] Tabla Room
+    - [ ] Tabla RestaurantProfile
+    - [ ] Tabla Booking
+    - [ ] Tabla Opinion
+- [ ] Codificar las contraseñas recibidas desde el front
+- [ ] Implementar rutas para que sean iguales que las del proyecto de Laravel
+- [ ] Implementar sistema de login
+- [ ] Implementar sistema de recuperacion de password
+- [ ] Implementar sistema de notificaciones push con firebase
+- [ ] Implementar sistema de notificaciones push con apn
+
+---
+### FrontEnd
 - [x] Crear proyecto front en Angular
 - [x] Encontrar e implementar manera de que el front end se actualice automaticamente al añadir datos a la BBDD
-- [ ] Crear peticiones GET para la API
-    - [x] Tabla User
-    - [ ] Tabla Restaurant
-    - [ ] Tabla Table
-    - [ ] Tabla Room
-    - [ ] Tabla RestaurantProfile
-    - [ ] Tabla Booking
-- [ ] Crear middlewares para la gestion de datos
-- [ ]
-
-``` NodeJs
-<!--  -->
-```
+- [x] Mostrar en tablas los datos de las peticiones

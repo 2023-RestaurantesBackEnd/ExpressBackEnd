@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Socket, io } from 'socket.io-client';
@@ -9,7 +10,7 @@ export class SocketService {
   socket!: Socket;
   socketData$: BehaviorSubject<any> = new BehaviorSubject({});
 
-  constructor() {
+  constructor(private httpClient: HttpClient) {
     this.socket = io('http://localhost:3000');
   }
 

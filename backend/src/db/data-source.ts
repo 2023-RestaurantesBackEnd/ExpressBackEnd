@@ -1,9 +1,11 @@
-import { DataSource, Table } from "typeorm";
+import { DataSource } from "typeorm";
 import { User } from "./entity/User.js";
 import { Restaurant } from "./entity/Restaurant.js";
 import { Booking } from "./entity/Booking.js";
 import { RestaurantProfile } from "./entity/RestaurantProfile.js";
+import { Table } from "./entity/Table.js";
 import { Room } from "./entity/Room.js";
+import { Opinion } from "./entity/Opinion.js";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -14,7 +16,7 @@ export const AppDataSource = new DataSource({
   database: "backend",
   synchronize: true,
   logging: true,
-  entities: [User, Restaurant, Booking, RestaurantProfile, Room, Table],
+  entities: [User, Restaurant, Booking, RestaurantProfile, Room, Table, Opinion],
   subscribers: [],
   migrations: [],
 });
