@@ -8,8 +8,8 @@ import {
   JoinColumn,
   Relation,
 } from "typeorm";
-import { User } from "./User.js";
-import { Restaurant } from "./Restaurant.js";
+import { User } from "./user.js";
+import { Restaurant } from "./restaurant.js";
 
 @Entity()
 export class Opinion {

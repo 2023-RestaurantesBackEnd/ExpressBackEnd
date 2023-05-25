@@ -2,13 +2,12 @@ import {
   Column,
   Entity,
   JoinColumn,
-  JoinTable,
   ManyToOne,
   PrimaryGeneratedColumn,
   Relation,
 } from "typeorm";
-import { Restaurant } from "./Restaurant.js";
-import { Room } from "./Room.js";
+import { Restaurant } from "./restaurant.js";
+import { Room } from "./room.js";
 
 @Entity()
 export class Table {

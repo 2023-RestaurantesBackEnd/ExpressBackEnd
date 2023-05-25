@@ -7,8 +7,8 @@ import {
   PrimaryGeneratedColumn,
   Relation,
 } from "typeorm";
-import { Restaurant } from "./Restaurant.js";
-import { Table } from "./Table.js";
+import { Restaurant } from "./restaurant.js";
+import { Table } from "./table.js";
 
 @Entity()
 export class Room {

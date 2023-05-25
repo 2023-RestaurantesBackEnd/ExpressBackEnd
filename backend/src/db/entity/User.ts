@@ -23,8 +23,14 @@ export class User {
   @Column()
   password: string;
 
-  @Column()
-  role: string; //El rol es un string de un numero, entre 0 y 10
+  @Column({
+    type: "integer",
+    default: 0,
+    unsigned: true,
+    check: "role >= 0 AND role <= 10",
+  })
+  role: number;
+   //El rol es un string de un numero, entre 0 y 10
 
   @Column({
     nullable: true,

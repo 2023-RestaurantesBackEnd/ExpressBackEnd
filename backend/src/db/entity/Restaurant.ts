@@ -3,14 +3,10 @@ import {
   Entity,
   JoinColumn,
   OneToMany,
-  OneToOne,
   PrimaryGeneratedColumn,
-  Relation,
 } from "typeorm";
-import { Table } from "./Table.js";
-import { Room } from "./Room.js";
-import { RestaurantProfile } from "./RestaurantProfile.js";
-
+import { Table } from "./table.js";
+import { Room } from "./room.js";
 @Entity()
 export class Restaurant {
   @PrimaryGeneratedColumn()
@@ -45,7 +41,7 @@ export class Restaurant {
   score: number;
 
   @Column("float")
-  avg_price: number;
+  avgPrice: number;
 
   @Column()
   typeFood: string;
@@ -86,13 +82,4 @@ export class Restaurant {
   @JoinColumn({ name: "room_id" })
   room: Room[];
 
-  @OneToOne(
-    () => RestaurantProfile,
-    (restaurantProfile) => restaurantProfile.restaurant,
-    {
-      cascade: ["update", "remove"],
-    }
-  )
-  @JoinColumn({ name: "restProf_id" })
-  restaurantProfile: Relation<RestaurantProfile>;
 }
