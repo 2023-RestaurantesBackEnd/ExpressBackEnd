@@ -5,16 +5,20 @@ import { Booking } from "./entity/booking.js";
 import { Table } from "./entity/table.js";
 import { Room } from "./entity/room.js";
 import { Opinion } from "./entity/opinion.js";
+import  config  from "./config.js"
+
+const sync = config.sync === "true"
+const log = config.log === "true"
 
 export const AppDataSource = new DataSource({
   type: "mysql",
-  host: "localhost",
-  port: 3306,
-  username: "root",
-  password: "root",
-  database: "backend",
-  synchronize: true,
-  logging: true,
+  host: config.host,
+  port: parseInt(config.port),
+  username: config.user,
+  password: config.passwd,
+  database: config.database,
+  synchronize: sync,
+  logging: log,
   entities: [User, Restaurant, Booking, Room, Table, Opinion],
   subscribers: [],
   migrations: [],

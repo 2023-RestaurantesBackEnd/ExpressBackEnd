@@ -6,6 +6,9 @@ tmp
 out-tsc
 bazel-out
 
+#Database Connection
+.env
+
 # Node
 node_modules
 npm-debug.log

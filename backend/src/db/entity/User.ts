@@ -27,7 +27,6 @@ export class User {
     type: "integer",
     default: 0,
     unsigned: true,
-    check: "role >= 0 AND role <= 10",
   })
   role: number;
    //El rol es un string de un numero, entre 0 y 10

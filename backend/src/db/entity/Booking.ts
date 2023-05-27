@@ -22,6 +22,9 @@ export class Booking {
   @Column()
   bookingCreation: Date;
 
+  @Column()
+  estimated:number;
+
   @Column({
     default: 0,
     nullable: true,

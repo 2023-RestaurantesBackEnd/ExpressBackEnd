@@ -4,9 +4,8 @@ import "reflect-metadata";
 import express from "express";
 import http from "http";
 import bodyParser from "body-parser";
-import userRouter from "./routes/user/user.routes.js";
+import routes from "./routes/routes.js"
 import cors from "cors";
-import restaurantRouter from "./routes/restaurant/restaurant.routes.js";
 
 const app = express();
 const server = http.createServer(app);
@@ -21,11 +20,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Routes
-app.use(userRouter);
-app.use(restaurantRouter);
+app.use(routes)
 
 // Database
 AppDataSource.initialize();
 
-// POrt
+// Port
 server.listen(3000);

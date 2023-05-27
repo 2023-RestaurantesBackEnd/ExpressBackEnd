@@ -8,6 +8,8 @@ const validateNewBooking = [
 
   check("bookingCreation").exists().isISO8601(),
 
+  check("estimated").exists(),
+
   check("state").optional().isInt(),
 
   check("user_id").exists(),

@@ -48,11 +48,11 @@
     - [x] Tabla Opinion
 
 - [ ] Codificar las contraseñas recibidas desde el front
-- [ ] Implementar rutas para que sean iguales que las del proyecto de Laravel
+- [x] Implementar rutas para que sean iguales que las del proyecto de Laravel
 - [ ] Implementar sistema de login
 - [ ] Implementar sistema de recuperacion de password
-- [ ] Implementar sistema de notificaciones push con firebase
-- [ ] Implementar sistema de notificaciones push con apn
+- [ ] Implementar sistema de notificaciones push con firebase (Android)
+- [ ] Implementar sistema de notificaciones push con apn (IOs)
 
 ---
 ### FrontEnd

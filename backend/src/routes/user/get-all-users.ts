@@ -4,9 +4,9 @@ import { User } from "../../db/entity/user.js";
 
 const usersRepo = AppDataSource.getRepository(User);
 
-const getUsers = async (req: Request, res: Response) => {
+const getAllUsers = async (req: Request, res: Response) => {
   const users = await usersRepo.find();
   res.send(users);
 };
 
-export default getUsers;
+export default getAllUsers;
