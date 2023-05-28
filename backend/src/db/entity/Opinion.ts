@@ -16,14 +16,12 @@ export class Opinion {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => User,{
-    cascade:['remove', 'update']
-  })
-  @JoinColumn({name: "user_id"})
+  @ManyToOne(() => User)
+  @JoinColumn({ name: "user_id" })
   user: Relation<User>;
 
-  @ManyToOne(()=>Restaurant)
-  @JoinColumn({name: "restaurant_id"})
+  @ManyToOne(() => Restaurant)
+  @JoinColumn({ name: "restaurant_id" })
   restaurant: Relation<Restaurant>;
 
   @Column()

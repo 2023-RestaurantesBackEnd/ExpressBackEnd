@@ -1,14 +1,14 @@
 import { Request, Response } from "express";
 import { AppDataSource } from "../../db/data-source.js";
-import { Room } from "../../db/entity/room.js";
+import { Opinion } from "../../db/entity/opinion.js";
 import { Error } from "../../errors/error.response.js";
 
-const roomRepo = AppDataSource.getRepository(Room);
+const opinionRepo = AppDataSource.getRepository(Opinion);
 
-const deleteRoomById = async (req: Request, res: Response) => {
+const deleteOpinionById = async (req: Request, res: Response) => {
   const { id } = req.params;
 
-  const { affected } = await roomRepo.delete({
+  const { affected } = await opinionRepo.delete({
     id: Number(id),
   });
 
@@ -22,4 +22,4 @@ const deleteRoomById = async (req: Request, res: Response) => {
   })
 };
 
-export default deleteRoomById;
+export default deleteOpinionById;

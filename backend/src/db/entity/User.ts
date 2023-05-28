@@ -41,9 +41,4 @@ export class User {
 
   @Column()
   token: string;
-
-  @BeforeInsert()
-  generateToken() {
-    this.token = randomBytes(32).toString('hex');
-  }
 }

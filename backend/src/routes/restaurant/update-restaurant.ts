@@ -1,64 +1,35 @@
+import { io } from "../../index.js";
 import { Request, Response } from "express";
 import { AppDataSource } from "../../db/data-source.js";
 import { Restaurant } from "../../db/entity/restaurant.js";
+import { Error } from "../../errors/error.response.js";
 
 const restaurantRepo = AppDataSource.getRepository(Restaurant);
 
 const updateRestaurantById = async (req: Request, res: Response) => {
   const { id } = req.params;
 
-  const {
-    restaurantName,
-    phone,
-    email,
-    password,
-    address,
-    city,
-    terrace,
-    score,
-    avgPrice,
-    typeFood,
-    url,
-    imgProfile,
-    imgGallery,
-    description,
-    latitude,
-    longitude,
-    status,
-  } = req.body;
+  // Update restaurant
+  const { affected } = await restaurantRepo.update(
+    {
+      id: Number(id),
+    },
+    req.body
+  );
 
-  // Buscar el restaurante a actualizar por su ID
-  const restaurantToUpdate = await restaurantRepo.findOneBy({ id: Number(id) });
-
-  if (!restaurantToUpdate) {
-    return res.status(404).send("Restaurante no encontrado");
+  // When restaurant not found send error
+  if (affected <= 0) {
+    res.status(404).send(Error.response(403, "Not found", "Entity not found"));
+    return;
   }
 
-  // Actualizar los campos del restaurante con los valores nuevos
-  restaurantToUpdate.restaurantName = restaurantName;
-  restaurantToUpdate.phone = phone;
-  restaurantToUpdate.email = email;
-  restaurantToUpdate.password = password;
-  restaurantToUpdate.address = address;
-  restaurantToUpdate.city = city;
-  restaurantToUpdate.terrace = terrace;
-  restaurantToUpdate.score = score;
-  restaurantToUpdate.avgPrice = avgPrice;
-  restaurantToUpdate.typeFood = typeFood;
-  restaurantToUpdate.url = url;
-  restaurantToUpdate.imgProfile = imgProfile;
-  restaurantToUpdate.imgGallery = imgGallery;
-  restaurantToUpdate.description = description;
-  restaurantToUpdate.latitude = latitude;
-  restaurantToUpdate.longitude = longitude;
-  restaurantToUpdate.status = status;
+  const restaurant = await restaurantRepo.findOneBy({ id: Number(id) });
 
-  // Guardar los cambios en la base de datos
-  const updatedRestaurant = await restaurantRepo.save(restaurantToUpdate);
-
+  // Send updated restaurant as response
+  io.emit("updateRestaurant", restaurant);
   res.send({
     status: "success",
-    restaurant: updatedRestaurant,
+    restaurant: restaurant,
   });
 };
 

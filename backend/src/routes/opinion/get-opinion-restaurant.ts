@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 import { AppDataSource } from "../../db/data-source.js";
-import { Booking } from "../../db/entity/booking.js";
+import { Opinion } from "../../db/entity/opinion.js";
 import { Restaurant } from "../../db/entity/restaurant.js";
 
-const bookingRepo = AppDataSource.getRepository(Booking);
+const opinionRepo = AppDataSource.getRepository(Opinion);
 const restaurantRepo = AppDataSource.getRepository(Restaurant);
 
-const getBookingByRestaurant = async (req: Request, res: Response) => {
+const getOpinionByRestaurant = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   const restaurantToFind = await restaurantRepo.findOneBy({ id: Number(id) });
@@ -15,13 +15,13 @@ const getBookingByRestaurant = async (req: Request, res: Response) => {
     return res.status(404).send("Restaurant not found");
   }
 
-  const bookingFromRestaurant = await bookingRepo.find({
+  const opinionFromRestaurant = await opinionRepo.find({
     where: {
       restaurant: restaurantToFind,
     },
   });
 
-  res.send(bookingFromRestaurant);
+  res.send(opinionFromRestaurant);
 };
 
-export default getBookingByRestaurant;
+export default getOpinionByRestaurant;

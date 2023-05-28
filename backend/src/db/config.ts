@@ -6,10 +6,10 @@ const dataConnection = {
   host: process.env.HOST || "",
   port: process.env.PORT || "",
   database: process.env.DATABASE || "",
-  user: process.env.USER || "",
-  passwd: process.env.PASSWORD || "",
+  db_user: process.env.DB_USER || "",
+  db_passwd: process.env.DB_PASSWORD || "",
   sync: process.env.SYNCRONIZE || "",
   log: process.env.LOGGIN || "",
 };
 
-export default dataConnection
+export default dataConnection;
