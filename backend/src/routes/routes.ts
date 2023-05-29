@@ -7,18 +7,20 @@ import restaurantRouter from "./restaurant/restaurant.routes.js";
 import bookingRouter from "./booking/booking.routes.js";
 import opinionsRouter from "./opinion/opinion.routes.js";
 import authRouter from "./auth/auth.routes.js";
+import verifyToken from "../middlewares/tokenHelper.js";
 
 const apiRouter = Router();
 const routes = Router();
 
 routes.use("/api/v1", jwt, apiRouter);
 
-apiRouter.use(roomRouter);
-apiRouter.use(userRouter);
-apiRouter.use(tableRouter);
-apiRouter.use(restaurantRouter);
-apiRouter.use(bookingRouter);
-apiRouter.use(opinionsRouter);
 apiRouter.use(authRouter);
+apiRouter.use(verifyToken,roomRouter);
+apiRouter.use(verifyToken,userRouter);
+apiRouter.use(verifyToken,tableRouter);
+apiRouter.use(verifyToken,restaurantRouter);
+apiRouter.use(verifyToken,bookingRouter);
+apiRouter.use(verifyToken,opinionsRouter);
+
 
 export default routes;
