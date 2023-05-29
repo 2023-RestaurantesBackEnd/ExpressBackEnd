@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 import { AppDataSource } from "../../db/data-source.js";
 import { User } from "../../db/entity/user.js";
+import { io } from "../../index.js";
+import bcrypt from "bcrypt";
 
 const usersRepo = AppDataSource.getRepository(User);
 
-const updateUserById = async (req: Request, res: Response) => {
-  const { id } = req.params;
-
+const createUser = async (req: Request, res: Response) => {
   const {
     username,
     email,
@@ -17,34 +17,24 @@ const updateUserById = async (req: Request, res: Response) => {
     token,
   } = req.body;
 
-  // Buscar el usuario a actualizar por su ID
-  const userToUpdate = await usersRepo.findOneBy({ id: Number(id) });
+  const encryptedPassword = await bcrypt.hash(password, 10);
 
-  if (!userToUpdate) {
-    return res.status(404).send("User not found");
-  }
+  const createdUser = await usersRepo.save({
+    username,
+    email,
+    phoneNumber,
+    password: encryptedPassword,
+    role,
+    profileImage: req.body.profileImage, // Utiliza la ruta de la imagen guardada en req.body.profileImage
+    device,
+    token,
+  });
 
-  // Actualizar los campos del usuario con los valores nuevos
-  userToUpdate.username = username;
-  userToUpdate.email = email;
-  userToUpdate.phoneNumber = phoneNumber;
-  userToUpdate.password = password;
-  userToUpdate.role = role;
-  userToUpdate.device = device;
-  userToUpdate.token = token;
-
-  if (req.body.profileImage) {
-    // Actualizar la ruta de la imagen de perfil si se proporciona
-    userToUpdate.profileImage = req.body.profileImage;
-  }
-
-  // Guardar los cambios en la base de datos
-  const updatedUser = await usersRepo.save(userToUpdate);
+  io.emit("updateNewUser", createdUser);
 
   res.send({
-    status: "success",
-    user: updatedUser,
+    success: "User created successfully",
   });
 };
 
-export default updateUserById;
+export default createUser;

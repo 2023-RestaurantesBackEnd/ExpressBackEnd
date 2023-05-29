@@ -1,13 +1,14 @@
 import { Router } from "express";
-import uploadedProfile from '../../middlewares/imageHelper.js'
 import login from "./login.js";
-import createUser from "../user/create-user.js";
 import validateNewUser from "../../validators/user.validator.js";
+import createUser from "../user/create-user.js";
+import uploadedProfile from "../../middlewares/imageHelper.js";
 
-const profileImg = uploadedProfile.uploadedProfile
 const router = Router();
+const profile = uploadedProfile.uploadedProfile
 
 router.post("/login", login);
-router.post("/register",validateNewUser, profileImg ,createUser)
+router.post("/register", validateNewUser, profile ,createUser);
+
 
 export default router;

@@ -23,21 +23,21 @@
     - [x] Tabla Booking
     - [x] Tabla Opinion
 
-- [ ] Crear peticiones para la API
+- [x] Crear peticiones para la API
     - [x] Tabla User
     - [x] Tabla Restaurant
-    - [ ] Tabla Table
-    - [ ] Tabla Room
-    - [ ] Tabla Booking
-    - [ ] Tabla Opinion
+    - [x] Tabla Table
+    - [x] Tabla Room
+    - [x] Tabla Booking
+    - [x] Tabla Opinion
 
-- [ ] Crear middlewares para la gestion de datos
+- [x] Crear middlewares para la gestion de datos
     - [x] Tabla User
     - [x] Tabla Restaurant
-    - [ ] Tabla Table
-    - [ ] Tabla Room
-    - [ ] Tabla Booking
-    - [ ] Tabla Opinion
+    - [x] Tabla Table
+    - [x] Tabla Room
+    - [x] Tabla Booking
+    - [x] Tabla Opinion
 
 - [x] Implementacion validacion de datos
     - [x] Tabla User
@@ -47,9 +47,10 @@
     - [x] Tabla Booking
     - [x] Tabla Opinion
 
-- [ ] Codificar las contraseñas recibidas desde el front
+- [x] Codificar las contraseñas recibidas desde el front
 - [x] Implementar rutas para que sean iguales que las del proyecto de Laravel
-- [ ] Implementar sistema de login
+- [x] Implementar sistema de login
+- [x] Implementar sistema de almacenamiento de imagenes
 - [ ] Implementar sistema de recuperacion de password
 - [ ] Implementar sistema de notificaciones push con firebase (Android)
 - [ ] Implementar sistema de notificaciones push con apn (IOs)

@@ -11,6 +11,7 @@ const createRestaurant = async (req: Request, res: Response) => {
   const restaurantToSave = await restaurantRepo.save(restaurant);
 
   io.emit("createRestaurant", restaurantToSave);
+  
   res.send({
     status: "success",
     restaurant: restaurantToSave,
