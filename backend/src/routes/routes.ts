@@ -15,6 +15,7 @@ const routes = Router();
 routes.use("/api/v1", jwt, apiRouter);
 
 apiRouter.use(authRouter);
+
 apiRouter.use(verifyToken,roomRouter);
 apiRouter.use(verifyToken,userRouter);
 apiRouter.use(verifyToken,tableRouter);
