@@ -19,7 +19,7 @@ const login = async (req: Request, res: Response) => {
 
   if (!dbUser.isVerified) {
     res.send({
-      error: "User has not verified email",
+      error: "El email de este usuario aun no ha sido verificado",
     });
     return;
   }
@@ -29,13 +29,13 @@ const login = async (req: Request, res: Response) => {
   if (result) {
     const token = jsonwebtoken.sign(
       {
-        exp: Math.floor(Date.now() / 1000) + 60 * 60,
+        exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24,
         data: "test",
       },
       process.env.JWT_SECRET
     );
     res.send({
-      jwt: token,
+      token: token,
     });
     return;
   }
@@ -45,8 +45,8 @@ const login = async (req: Request, res: Response) => {
     .send(
       Error.response(
         403,
-        "Invalid credentials",
-        "Credentials provided does not match with any account"
+        "Credenciales invalidas",
+        "La credenciales proporcionadas no corresponden a ninguna cuenta"
       )
     );
 };
