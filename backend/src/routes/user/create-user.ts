@@ -5,6 +5,7 @@ import { io } from "../../index.js";
 import bcrypt from "bcrypt";
 import crypto from "node:crypto";
 import jsonwebtoken from "jsonwebtoken";
+import { Error } from "../../errors/error.response.js";
 
 import { sendMail } from "../../services/mail-service.js";
 
@@ -12,15 +13,33 @@ const usersRepo = AppDataSource.getRepository(User);
 
 
 const createUser = async (req: Request, res: Response) => {
-  const { username, email, phoneNumber, password, role, device } = req.body;
+  const { name, email, phone, password, role, device } = req.body;
 
   const encryptedPassword = await bcrypt.hash(password, 10);
 
   const userToken = crypto.randomBytes(48).toString("hex");
+
+  const dbUser = await usersRepo.findOneBy({
+    email: email,
+  });
+  
+
+  if(dbUser) {
+    res.status(403)
+    .send(
+      Error.response(
+        403,
+       "Repetido",
+       "Email en uso, porfavor use otro o inicie sesión",
+      )
+    );
+    return
+  }
+
   const createdUser = await usersRepo.save({
-    username,
+    username: name,
     email,
-    phoneNumber,
+    phoneNumber: phone,
     password: encryptedPassword,
     role,
     profileImage: req.body.profileImage,
