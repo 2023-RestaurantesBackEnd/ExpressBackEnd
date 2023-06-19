@@ -27,7 +27,7 @@ AppDataSource.initialize();
 
 // Use PORT provided in environment or default to 3000
 const port = process.env.PORT || 3000;
-const ip = process.env.IP || '0.0.0.0';
+const ip = process.env.IP || '127.0.0.1';
 
 // Listen on `port` and 0.0.0.0
 server.listen(port, Number(ip), ()=>{
